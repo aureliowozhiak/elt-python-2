@@ -1,24 +1,19 @@
 from methods.extract import Extract
+from methods.transform import Transform
+from methods.load import Load
+from methods.tags import tags
 
 url = "https://pt.wikipedia.org/wiki/Python"
 
 extract = Extract(url)
+load = Load()
 
-# Mapeamento de tags HTML para um dict
+i = 0
+for table in extract.get_tags(tags["table"]):
+    transform = Transform(table)
+    df = transform.transform()
+    if df.is_empty():
+        continue
 
-tags = {
-    "paragraph": "p",
-    "title": "h1",
-    "subtitle": "h2",
-    "link": "a",
-    "list": "ul",
-    "list_item": "li",
-    "image": "img",
-    "table": "table",
-    "table_row": "tr",
-    "table_header": "th",
-    "table_data": "td"
-}
-
-
-table = extract.get_tags(tags["table"])[1]
+    load.save(df, f"{i}.csv")
+    i += 1
