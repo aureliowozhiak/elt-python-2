@@ -26,3 +26,6 @@ To use this script, follow these steps:
     ```bash
     python3 -m app https://pt.wikipedia.org/wiki/Python https://pt.wikipedia.org/wiki/Java
     ```
+
+
+Projeto feito no curso de engenharia de dados da Udemy: [https://dataengineer.help/cursos/curso-de-engenharia-de-dados/](https://dataengineer.help/cursos/curso-de-engenharia-de-dados/)
